@@ -59,9 +59,9 @@ testdata_violin = ggplot(testdata, aes(n_voxels) )+
 testdata_violin
 
 testdata_point = ggplot(testdata, aes(NN_dist, n_voxels)) +
-  geom_point() +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 20)) +
-  scale_y_continuous(breaks = scales::pretty_breaks(n = 20))
+geom_point() +
+scale_x_continuous(breaks = scales::pretty_breaks(n = 20)) +
+scale_y_continuous(breaks = scales::pretty_breaks(n = 20))
 
 #try summarizing
 summary(testdata$NN_dist)
@@ -81,4 +81,11 @@ select(NN_dist, n_voxels) %>% #selects only the relevant columns
   geom_point() +
   scale_x_continuous(breaks = scales::pretty_breaks(n = 20)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 20))
+
+## Try to bind together WT and KO data to graph on same axis 
+Ex18_WT_Isl1Lhx3_05 <- read.csv("Ex18_20150614_K5230_WT_514_yes-dox_Isl1-594_Lhx3-488_DAPI_05_SIR_EAL_THR-data_1.csv")
+
+## Try to find 
+cbind(Ex18_WT_Isl1Lhx3_05,Ex18_KO_Isl1Lhx3_05) ## doesnt work because the two files are of different lengths
+## try 'cbind.fill' function istead? 
 
